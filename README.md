@@ -3,6 +3,7 @@ Milestone1 Repository
 
 ## File Structure
 
+```
 .
 ├── README.md
 ├── docs
@@ -11,7 +12,7 @@ Milestone1 Repository
 │   ├── LICENSE
 │   └── Team_Contract.md
 └── scripts
-
+```
 
 
 ## Proposal
