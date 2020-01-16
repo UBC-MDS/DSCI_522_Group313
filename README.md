@@ -1,6 +1,19 @@
 # DSCI_522_Group313
 Milestone1 Repository
 
+## File Structure
+
+.
+├── README.md
+├── docs
+│   ├── CODE_OF_CONDUCT.md
+│   ├── CONTRIBUTING.md
+│   ├── LICENSE
+│   └── Team_Contract.md
+└── scripts
+
+
+
 ## Proposal
 
 ### Data Set
