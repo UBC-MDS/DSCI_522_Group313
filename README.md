@@ -19,6 +19,11 @@ Milestone1 Repository
 
 ```
 
+## How to Download Data
+
+Please refer to the README.md file on the `src` folder
+
+
 
 ## Proposal
 
