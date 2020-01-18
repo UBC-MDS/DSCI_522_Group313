@@ -14,6 +14,11 @@ Milestone1 Repository
 └── scripts
 ```
 
+## How to Download Data
+
+Please refer to the README.md file on the `src` folder
+
+
 
 ## Proposal
 
