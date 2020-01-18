@@ -12,7 +12,7 @@ Open your termial:
 > Rscript load_data.R
 
 
-3. You will be able to see the downloaded file on the "data" folder
+3. You will be able to see the downloaded file on the "data" folder in the root project directory
 
 **If you want to download data file in other directories or different file name use the arguments**
 
