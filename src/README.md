@@ -12,4 +12,11 @@ Open your termial:
 > Rscript load_data.R
 
 
-3. You will be able to see the downloaded files on the "data" folder
+3. You will be able to see the downloaded file on the "data" folder
+
+**If you want to download data file in other directories or different file name use the arguments**
+
+> Rscript load_data.R --file_dir="YOUR DIRECTORY" --file_name="YOUR FILE NAME"
+
+ex) 
+> Rscript load_data.R --file_dir="~/Desktop" --file_name="data.csv"
