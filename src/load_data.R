@@ -21,11 +21,22 @@ print(head(opt))
 
 main <- function(file_dir, file_name){
   
+  # Make the full path using file_dir & file_name
+  if (endsWith(file_dir,"/")){
+    raw_path <- paste(file_dir, "raw_", file_name, sep="")
+    cleaned_path <- paste(file_dir, "cleaned_", file_name, sep="")
+  } else {
+    raw_path <- paste(file_dir,"/", "raw_" , file_name, sep="")
+    cleaned_path <- paste(file_dir,"/", "cleaned_" , file_name, sep="")
+  }
+  
+  
   # Read Data from source
   file <- read_csv("http://data.insideairbnb.com/canada/qc/quebec-city/2019-11-07/data/listings.csv.gz")
+  raw_df <- subset(file)
+  
   
   # Import necessary columns
-  
   airbnb_df <- subset(file, select = -c(summary, space, description, scrape_id, last_scraped, 
                                         experiences_offered, thumbnail_url, medium_url, xl_picture_url, 
                                         host_acceptance_rate, name, neighbourhood, neighborhood_overview, 
@@ -34,33 +45,69 @@ main <- function(file_dir, file_name){
                                         host_picture_url))
   
   
+  # Write Raw Data to a csv file
+  write_csv(file, raw_path)
+  print("---------------------------")
+  print("---------------------------")
+  print("Raw Data Successfully Downloaded.")
+  print(paste("Downloaded Raw Data File saved in: ", raw_path, sep=" "))
+  print("---------------------------")
+    
+  # Write Filtered Data to a csv file
+  write_csv(airbnb_df, cleaned_path)
+  print("---------------------------")
+  print("---------------------------")
+  print("Processed Data Successfully Downloaded.")
+  print(paste("Downloaded Cleaned Data File saved in: ", cleaned_path, sep=" "))
+  print("---------------------------")
   
-  # Write Data to a csv file
-  if (endsWith(file_dir,"/")){
-    path <- paste(file_dir,file_name, sep="")
-  } else {
-    path <- paste(file_dir, file_name, sep="/")
-  }
   
-  write_csv(airbnb_df, path)
-  print("---------------------------")
-  print("---------------------------")
-  print("Data Successfully Downloaded.")
-  print("---------------------------")
-  print("---------------------------")
   
-  # Test function
-  test_data(data_dir=path)
-
+  # Test functions
+  test_raw_data(data_dir=raw_path)
+  test_cleaned_data(data_dir=cleaned_path)
+  
+  
+  print("-------------------------------------------")
+  print("-------------Process complete--------------")
+  print("-------------------------------------------")
 }
 
 
-#' Test downloaded dataset is the identical with the one used in our analysis
+
+#' Test downloaded RAW dataset is the identical with the original one
 #'
 #' @param  path path of downloaded datafile
 #' @return the string that confirmss consistency of data through a dimension check.
 
-test_data <- function(data_dir){
+test_raw_data <- function(data_dir){
+  data <- read_csv(data_dir)
+  
+  # Test 1
+  test_that("Summary, Space, other columns should be still included in the dataset", {
+    expect_equal(dim(data)[2], 106)
+  })
+  # Test 2
+  test_that("Number of observations should be 2704", {
+    expect_equal(dim(data)[1], 2704)
+  })
+  
+  # Return a message
+  print("--------------")
+  print("--------------")
+  print("Raw Data confirmed.")
+  print("--------------")
+  print("--------------")
+}
+
+
+
+#' Test downloaded CLEANED dataset is the identical with the one used in our analysis
+#'
+#' @param  path path of downloaded datafile
+#' @return the string that confirmss consistency of data through a dimension check.
+
+test_cleaned_data <- function(data_dir){
   data <- read_csv(data_dir)
   
   # Test 1
@@ -75,7 +122,7 @@ test_data <- function(data_dir){
   # Return a message
   print("--------------")
   print("--------------")
-  print("Data confirmed.")
+  print("Cleaned Data confirmed.")
   print("--------------")
   print("--------------")
 }
