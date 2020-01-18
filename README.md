@@ -18,20 +18,19 @@ Milestone1 Repository
 ## Proposal
 
 ### Data Set
-[Forest Fires Data Set](https://archive.ics.uci.edu/ml/datasets/Forest+Fires)
+[AirBnb Quebec City Dataset](http://data.insideairbnb.com/canada/qc/quebec-city/2019-11-07/data/listings.csv.gz)
 
-This data set aims to predict the area burned by forest fires in the North-East Portugal region. It includes 517 rows and 13 attributes, including temperature, rain, wind, and month. 
+This data set looks at various AirBnb listings from 2019 in Quebec City, Quebec. It has various features, including neighbourhood, room type, and price. 
 
 ### Research Question
 
-Our main research question is: How can one predict the severity of a forest fire? *Note: severity is indicated by the total area burned by the fire*. More specifically, we are interested in analyzing how the the various attributes from the dataset affect forest fire severity, as well as possible interactions between attributes.
+Our main research question is: What are the most important features to predict the price of an AirBnb in Quebec City? This is a *predictive* question. 
 
 ### Analysis Plan
 
 Multiple linear regression (continuous outcome)
 
 ### Exploratory Data Analysis 
-- Table: Regression output and model
-- Figure: Multiple linear regression line graphs
+For our exploratory data analysis, we will first aim to become familiar with the data by exploring the data-types of each column, as well as the unique names of the categorical features (e.g. the names of neighbourhoods contained within the dataset). For our table, we will ..... and for a figure, we will ......
 
 ### Sharing of Results
