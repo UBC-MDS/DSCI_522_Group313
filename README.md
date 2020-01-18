@@ -34,13 +34,23 @@ This data set looks at various AirBnb listings from 2019 in Quebec City, Quebec.
 
 ### Research Question
 
-Our main research question is: What are the most important features to predict the price of an AirBnb in Quebec City? This is a *predictive* question. 
+Our main research question is a **predictive research question**: What are the most important features to predict the price per night of an AirBnb in Quebec City?
+ 
 
 ### Analysis Plan
 
-Multiple linear regression (continuous outcome)
+We plan to train a regression model to predict the price per night of hosting airbnb on Quebec City.
+Some of the models in consideration are:
+- Multiple Linear Regression
+- Generalized Linear Regression
+- Random Forest Regression
+
+We will try to test out models and choose the one that performs the best.
+
 
 ### Exploratory Data Analysis 
-For our exploratory data analysis, we will first aim to become familiar with the data by exploring the data-types of each column, as well as the unique names of the categorical features (e.g. the names of neighbourhoods contained within the dataset). For our table, we will ..... and for a figure, we will ......
+For our exploratory data analysis, we will first aim to become familiar with the data by exploring the data-types of each column, as well as the unique names of the categorical features (e.g. the names of neighbourhoods contained within the dataset).
+Because there are over 80 columns in our dataset, selecting features is an impending matter. Using correlation plots, we will try to observe distribution of each variables and relationship between predictors and response.
 
 ### Sharing of Results
+After model development, we will compare our results with the prediction that is made on the airbnb official website, which gives an estimation of how much you can earn as an airbnb host. https://airbnb.ca/host/homes.
