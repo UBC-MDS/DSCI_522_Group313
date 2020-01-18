@@ -6,12 +6,17 @@ Milestone1 Repository
 ```
 .
 ├── README.md
+├── data
+│   └── README.md
 ├── docs
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
 │   ├── LICENSE
 │   └── Team_Contract.md
-└── scripts
+└── src
+    ├── EDA.ipynb
+    └── load_data.R
+
 ```
 
 ## How to Download Data
