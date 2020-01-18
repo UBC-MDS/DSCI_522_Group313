@@ -11,12 +11,11 @@ Milestone1 Repository
 ├── docs
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
-│   ├── LICENSE
-│   └── Team_Contract.md
+│   └── LICENSE
 └── src
-    ├── EDA.ipynb
+    ├── README.md
+    ├── exploratory_analysis.ipynb
     └── load_data.R
-
 ```
 
 ## How to Download Data
@@ -53,4 +52,6 @@ For our exploratory data analysis, we will first aim to become familiar with the
 Because there are over 80 columns in our dataset, selecting features is an impending matter. Using correlation plots, we will try to observe distribution of each variables and relationship between predictors and response.
 
 ### Sharing of Results
-After model development, we will compare our results with the prediction that is made on the airbnb official website, which gives an estimation of how much you can earn as an airbnb host. https://airbnb.ca/host/homes.
+After development, we will present our model with visualized residual plots, table with coefficients and their interpretations.
+
+Also, we will compare our results with the prediction that is made on the airbnb official website, which gives an estimation of how much you can earn as an airbnb host: https://airbnb.ca/host/homes.
