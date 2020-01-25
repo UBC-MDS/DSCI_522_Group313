@@ -10,15 +10,21 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 .
 ├── README.md
 ├── data
-│   └── README.md
 ├── docs
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
 │   └── LICENSE
+├── eda
 └── src
     ├── README.md
+    ├── analysis.ipynb
+    ├── eda_summary.py
     ├── exploratory_analysis.ipynb
-    └── load_data.R
+    ├── load_data.R
+    ├── preprocessing.ipynb
+    └── preprocessing.py
+
+R
 ```
 
 ## Introduction
