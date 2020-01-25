@@ -10,12 +10,9 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 .
 ├── README.md
 ├── data
-│   └── README.md
 ├── docs
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
-│   ├── LICENSE
-│   └── proposal.md
 └── src
     ├── README.md
     ├── analysis.ipynb
@@ -24,6 +21,7 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
     ├── load_data.R
     ├── preprocessing.ipynb
     └── preprocessing.py
+
 ```
 
 ## About
