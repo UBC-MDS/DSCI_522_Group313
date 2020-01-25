@@ -71,7 +71,7 @@ def main(quebec_path):
     #making an 80-20 train-test split
     X = quebec_df.drop(columns = ['price'])
     y = quebec_df[['price']]
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 5)
 
     #making sure split sizes are correct
     assert X_train.shape[1] == 44, "X_train did not split properly"
@@ -88,6 +88,8 @@ def main(quebec_path):
 
     X_test.to_csv("../data/X_test-cleaned-quebec.csv", index = True)
     y_test.to_csv("../data/y_test-cleaned-quebec.csv", index = True, header = True)
+
+    quebec_df.to_csv("../data/cleaned_data.csv", index = True, header = True)
 
 if __name__ == "__main__":
     main(opt["--quebec_path"])
