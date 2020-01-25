@@ -68,7 +68,7 @@ def main(input_dir, output):
     feature_importance_rfr = pd.DataFrame({'feature': X_train.columns, 'scores': grid.best_estimator_.feature_importances_}).sort_values(by=['scores'], ascending = False)
     feature_importance_rfr.to_csv(output + "/feature_importance_rfr.csv", index=False)
     
-    print("Random Forest Regressor")
+    print("Random Forest Regressor Completed")
     
     #XGBRegressor
     print("Running XGBRegressor")
@@ -87,8 +87,8 @@ def main(input_dir, output):
     print("Completed XGBRegressor")
     
     #SummaryTable
-    summary_df = pd.DataFrame({'model': ['RFG', 'SVR', 'XGB'], 'train_scores': [clf.score(X_train, y_train), grid.score(X_train, y_train), xgb.score(X_train, y_train)], 
-                  'test_scores'  : [clf.score(X_test, y_test), grid.score(X_test, y_test), xgb.score(X_test, y_test)]
+    summary_df = pd.DataFrame({'model': ['RFG', 'SVR', 'XGB'], 'train_scores': [grid.score(X_train, y_train), clf.score(X_train, y_train), xgb.score(X_train, y_train)], 
+                  'test_scores'  : [grid.score(X_test, y_test), clf.score(X_test, y_test), xgb.score(X_test, y_test)]
                  })
     summary_df.to_csv(output + "/summary_df.csv", index=False)
     #Plot
