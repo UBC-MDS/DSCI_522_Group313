@@ -9,16 +9,20 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 ```
 .
 ├── README.md
-├── data      # default directory of storing data
+├── data
 ├── docs
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
 │   ├── LICENSE
+│   ├── citations.bib
+│   ├── final_report.Rmd
+│   ├── final_report.md
 │   └── proposal.md
-├── eda       # table & plot for EDA
+├── eda
 │   └── README.md
-├── results   # model & analysis results
-│   └── README.md
+├── results
+│   ├── README.md
+│   └── score_plot.png
 └── src
     ├── README.md
     ├── eda_summary.py
