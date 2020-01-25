@@ -1,13 +1,14 @@
-How to Download Data:
+## How to Download Data:
 
-Open your termial:
+#### load_data.R
+Open your terminal:
 
 1. Go to the project directory using command prompt:
 
 >  cd YOUR_PATH/DSCI_522_Group313/src/
 
 
-2. Execute the script using R
+2. Execute the script using R (We have set the default values)
 
 > Rscript load_data.R
 
@@ -16,7 +17,62 @@ Open your termial:
 
 **If you want to download data file in other directories or different file name use the arguments**
 
-> Rscript load_data.R --file_dir="YOUR DIRECTORY" --file_name="YOUR FILE NAME"
+> Rscript load_data.R --data_url="URL to the data file"  --full_path="Path to download your raw data"
 
 ex) 
-> Rscript load_data.R --file_dir="~/Desktop" --file_name="data.csv"
+> Rscript load_data.R --data_url="https://www.data.com/data.csv" --full_path="~/Desktop/raw_data.csv"
+
+<br>
+
+## How to Preprocess Data:
+
+This script will create 5 datafiles:
+- Processed datafile
+- Training Set (features) of processed datafile: `X_train_` as prefix
+- Training Set (labels) of processed datafile: `y_train_` as prefix
+- Testing Set (features) of processed datafile: `X_test_` as prefix
+- Testing Set (labels) of processed datafile: `y_test_` as prefix
+
+
+#### preprocessing.py
+Open your terminal:
+
+1. Go to the project directory using command prompt
+
+>  cd YOUR_PATH/DSCI_522_Group313/src/
+
+2. Execute the script using Python (We have set the default values)
+
+> python preprocessing.py
+
+
+** If you want to process data to a different folder as a different name use the arguments
+ex)
+> python preprocessing.py --store_path="~/Desktop/my_file_name.csv"
+
+
+<br>
+
+## How to generate EDA summary plots & tables
+
+This script will create 3 types of files
+- .html file that contains visualized information about pairwise variables
+- .csv file that contains descriptive statistics information about variables
+- .csv file that contains correlation coefficient information about pairwise variables.
+
+#### eda_summary.py
+Open your terminal
+
+1. Go to the project directory using command prompt
+
+> cd YOUR_PATH/DSCI_522_Group313/src/
+
+2. Execute the script using Python (we have set the default values)
+
+> python eda_summary.py
+
+or
+
+> python eda_summary.py --data_dir="DIRECTORY_TO_PROCCESSED_DATA_FROM_SCRIPT_2" --file_dir="DIRECTORY_TO_SAVE_GENERATED_FILES"
+
+<br>
