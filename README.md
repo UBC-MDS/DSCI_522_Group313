@@ -16,7 +16,9 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 │   ├── LICENSE
 │   └── proposal.md
 ├── eda       # table & plot for EDA
+│   └── README.md
 ├── results   # model & analysis results
+│   └── README.md
 └── src
     ├── README.md
     ├── eda_summary.py
@@ -25,7 +27,6 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
     ├── model.py
     ├── preprocessing.ipynb
     └── preprocessing.py
-
 ```
 
 ## About
