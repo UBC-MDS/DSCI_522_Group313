@@ -76,3 +76,29 @@ or
 > python eda_summary.py --data_dir="DIRECTORY_TO_PROCCESSED_DATA_FROM_SCRIPT_2" --file_dir="DIRECTORY_TO_SAVE_GENERATED_FILES"
 
 <br>
+
+## How to run the prediction model
+
+This script will create 4 files and store in the specified folder
+- .png file that contains bar plot the test accuracy scores of each model.
+- .csv file that contains summary of the feature important features for Random Forest Regressor model.
+- .csv file that contains summary of the feature important features for XGBoost Regressor model.
+- .csv file that contains summary of the test accuracy scores.
+
+#### model.py
+Open your terminal
+
+1. Go to the project directory using command prompt
+
+> cd YOUR_PATH/DSCI_522_Group313/src/
+
+2. Execute the script using Python (we have set the default values)
+
+> python model.py
+
+OR
+
+> python model.py --source_file_location="../data" --target_location="../results"
+
+
+<br>

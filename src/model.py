@@ -1,7 +1,11 @@
 # author: Suvarna Moharir, Jaekeun Lee, Chimaobi Amadi
 # date: 2020-01-24
 '''
-Usage: model.py --source_file_location=<source_file_location> --target_location=<target_location>
+Usage: model.py [--source_file_location=<source_file_location>] [--target_location=<target_location>]
+
+Options:
+-s --source_file_location=<source_file_location>   [default: ../data]
+-t --target_location=<target_location>             [default: ../results]
 
 '''
 #Import Libraries
@@ -18,7 +22,8 @@ from selenium import webdriver
 from docopt import docopt
 
 def main(input_dir, output):
-  
+    print(input_dir)
+    print(output)
     #Load X_train, X_test
     
     X_train = pd.read_csv(input_dir + "/X_train.csv")
@@ -93,15 +98,20 @@ def main(input_dir, output):
     summary_df.to_csv(output + "/summary_df.csv", index=False)
     #Plot
     score_plot = alt.Chart(summary_df).mark_bar().encode(
-        x='model:N',
-        y='test_scores:Q',
-        color='train_scores:Q')
+        y='model:N',
+        x='test_scores:Q',
+        color='model:N')
     
     #plot.save('chart.png')   
     with alt.data_transformers.enable('default'):
             score_plot.save(
                 output + "/score_plot.png"
             )
-  
+    print("=============================")
+    print("Model successfully completed!")  
+    print("=============================")
+
+
+
 opt = docopt(__doc__)
 main(opt['--source_file_location'], opt['--target_location'])
