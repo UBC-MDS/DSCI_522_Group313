@@ -1,6 +1,6 @@
-# don't upload html files
-.html
-
+# don't upload eda test files
+./eda/*.html
+./eda/*.csv
 # don't upload csv files
 *.csv
 
