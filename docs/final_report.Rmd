@@ -3,7 +3,7 @@ title: "Final Report"
 author: "Group 313"
 date: "25/01/2020"
 bibliography: ./citations.bib
-output: html_document 
+output: github_document
 
 ---
 
