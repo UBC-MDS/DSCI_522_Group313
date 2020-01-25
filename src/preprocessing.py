@@ -1,10 +1,12 @@
 # authors: Suvarna Moharir, Jaekeun Lee, Chimaobi Amadi
+# date: 2020.01.24
 
 ''' This script reads in the data, drops blank columns, cleans missing data, and then splits the data into testing and training sets
-Usage: preprocessing.py [--quebec_path=<quebec_path>]
+Usage: preprocessing.py [--quebec_path=<quebec_path> --store_path=<store_path>]
 
 Options:
 --quebec_path=<quebec_path> Relative file path for the quebec_df csv  [default: ../data/raw_quebec_city_airbnb_data.csv]
+--store_path=<store_path>   Full path and file name to where the processed data should live and called [default: ../data/cleaned_data.csv]
 '''
 
 #importing packages and libraries
@@ -18,7 +20,7 @@ from docopt import docopt
 
 opt = docopt(__doc__)
 
-def main(quebec_path):
+def main(quebec_path, store_path):
     file = pd.read_csv(quebec_path)
 
     #dropping columns where all values are null and/or columns that are in French
@@ -83,13 +85,17 @@ def main(quebec_path):
     X_test = pd.DataFrame(preprocessor.transform(X_test), index=X_test.index, columns=X_train.columns)
 
     #converting to csv
-    X_train.to_csv("../data/X_train-cleaned-quebec.csv", index = True)
-    y_train.to_csv("../data/y_train-cleaned-quebec.csv", index = True, header = True)
 
-    X_test.to_csv("../data/X_test-cleaned-quebec.csv", index = True)
-    y_test.to_csv("../data/y_test-cleaned-quebec.csv", index = True, header = True)
+    folder_dir = "/".join(store_path.split("/")[:-1])
+    file_name = store_path.split("/")[-1]
 
-    quebec_df.to_csv("../data/cleaned_data.csv", index = True, header = True)
+    X_train.to_csv(folder_dir+"/" + "X_train_"+file_name, index = True)
+    y_train.to_csv(folder_dir+"/" + "y_train_"+file_name, index = True, header = True)
+
+    X_test.to_csv(folder_dir+"/" + "X_test_"+file_name, index = True)
+    y_test.to_csv(folder_dir+"/" + "y_test"+file_name, index = True, header = True)
+
+    quebec_df.to_csv(store_path, index = True, header = True)
 
 if __name__ == "__main__":
-    main(opt["--quebec_path"])
+    main(opt["--quebec_path"], opt["--store_path"])
