@@ -7,13 +7,17 @@ from sklearn.svm import SVR
 from xgboost import XGBRegressor
 from matplotlib import pyplot
 import altair as alt
+import pandas as pd
+#def main():
 
-
+#Specify result folder
+output = "../results/"
 #Load X_train, X_test
 
 X_train = pd.read_csv("../data/X_train.csv")
 X_test = pd.read_csv("../data/X_test.csv")
-
+y_train = pd.read_csv("../data/y_train.csv")
+y_test = pd.read_csv("../data/y_test.csv")
 
 #Modelling using GridSearchCV
 ##SVR
@@ -26,7 +30,7 @@ svr = SVR()
 
 clf = GridSearchCV(svr, param_grid, cv = 5)
 clf.fit(X_train, y_train.to_numpy().ravel())
-
+#clf.fit(X_train, y_train)
 print(clf.score(X_train, y_train))
 print(clf.score(X_test, y_test))
 print(clf.best_params_)
@@ -53,28 +57,38 @@ print(f"Test score for Random Forest Regressor: {grid.score(X_test, y_test):.2f}
 
 print(grid.best_params_)
 
-feature_importance_rfg = pd.DataFrame({'feature': X_train.columns, 'scores': grid.best_estimator_.feature_importances_}).sort_values(by=['scores'], ascending = False)
+feature_importance_rfr = pd.DataFrame({'feature': X_train.columns, 'scores': grid.best_estimator_.feature_importances_}).sort_values(by=['scores'], ascending = False)
+feature_importance_rfr.to_csv(output + "feature_importance_rfr.csv", index=False)
 
+print("Random Forest Regressor")
 
 #XGBRegressor
+print("Running XGBRegressor")
 xgb = XGBRegressor(booster='gbtree',gamma=0,
                    learning_rate=0.1,colsample_bytree=0.8,subsample=0.7,min_child_weight=2,
                    max_depth=2,n_estimators=70,n_jobs=-1,reg_alpha=1,silent=True)
 
 xgb.fit(X_train, y_train)
 
-print(xgb.score(X_train, y_train))
-print(xgb.score(X_test, y_test))
+print(f"Train score for XGBRegressor :{xgb.score(X_train, y_train):.2f}")
+print(f"Test score for XGBRegressor :{xgb.score(X_test, y_test):.2f}")
 
 feature_importance_xgb = pd.DataFrame({'feature': X_train.columns, 'scores': xgb.feature_importances_}).sort_values(by=['scores'], ascending = False)
+feature_importance_xgb.to_csv(output + "feature_importance_xgb.csv", index=False)
+
+print("Completed XGBRegressor")
 
 #SummaryTable
 summary_df = pd.DataFrame({'model': ['RFG', 'SVR', 'XGB'], 'train_scores': [clf.score(X_train, y_train), grid.score(X_train, y_train), xgb.score(X_train, y_train)], 
               'test_scores'  : [clf.score(X_test, y_test), grid.score(X_test, y_test), xgb.score(X_test, y_test)]
              })
-
+summary_df.to_csv(output + "summary_df.csv", index=False)
 #Plot
-alt.Chart(summary_df).mark_bar().encode(
+plot = alt.Chart(summary_df).mark_bar().encode(
     x='model:N',
     y='test_scores:Q',
     color='train_scores:Q')
+   
+    
+#if __name__ == "__main__":
+#    main()
