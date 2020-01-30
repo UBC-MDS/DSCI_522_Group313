@@ -22,14 +22,17 @@ from selenium import webdriver
 from docopt import docopt
 
 def main(input_dir, output):
-    print(input_dir)
-    print(output)
+   
     #Load X_train, X_test
     
     X_train = pd.read_csv(input_dir + "/X_train.csv")
     X_test = pd.read_csv(input_dir + "/X_test.csv")
     y_train = pd.read_csv(input_dir + "/y_train.csv")
     y_test = pd.read_csv(input_dir + "/y_test.csv")
+    
+    assert len(X_train) == 1755, "Wrong X_train file is loaded"
+    assert len(X_test) == 439, "Wrong X_test file is loaded"
+    assert X_test.shape[1] == 74, "The number of columns for X_test is wrong"
     
     #Modelling using GridSearchCV
     ##SVR
