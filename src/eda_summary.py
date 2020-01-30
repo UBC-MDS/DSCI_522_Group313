@@ -6,8 +6,8 @@ Usage:
 
 Options:
 -h --help                         show this screen
--d --data_dir=<data_dir>          directory of the folder that has data [default: ../data/cleaned_data.csv]
--f --file_dir=<file_dir>          directory of the folder to save generated images/tables [default: ../eda/]
+-d --data_dir=<data_dir>          directory of the folder that has data [default: data/cleaned_data.csv]
+-f --file_dir=<file_dir>          directory of the folder to save generated images/tables [default: eda/]
 """
 
 
