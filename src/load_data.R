@@ -3,11 +3,12 @@
 
 "This script downloads and loads dataset given url.
 
-Usage: load_data.R [--file_dir=<file_dir> --file_name=<file_name>]
+Usage: load_data.R [--file_path=<file_path> --data_url=<data_url>]
 
 Options:
-  --file_dir=<file_dir>     Path to save your datafile [default: ../data/]
-  --file_name=<file_name>    your datafile name [default: quebec_city_airbnb_data.csv]
+  --file_path=<file_path>     Path to save your datafile [default: data/raw_quebec_city_airbnb_data.csv]
+  --data_url=<data_url>    your datafile name [default: http://data.insideairbnb.com/canada/qc/quebec-city/2019-11-07/data/listings.csv.gz]
+
 " -> doc
 
 library(docopt)
@@ -19,33 +20,32 @@ opt <- docopt(doc)
 print(head(opt)) 
 
 
-main <- function(file_dir, file_name){
+main <- function(file_path, data_url){
   
-  # Make the full path using file_dir & file_name
-  if (endsWith(file_dir,"/")){
-    raw_path <- paste(file_dir, "raw_", file_name, sep="")
-  } else {
-    raw_path <- paste(file_dir,"/", "raw_" , file_name, sep="")
-  }
-  
+
   
   # Read Data from source
-  file <- read_csv("http://data.insideairbnb.com/canada/qc/quebec-city/2019-11-07/data/listings.csv.gz")
+  file <- read_csv(data_url)
   raw_df <- subset(file)
-  
+
+  print("---------------------------")
+  print("---------------------------")
+  print("Data Successfully Read from the url.")
+  print(paste("Downloaded Raw Data File saved in: ", file_path, sep=" "))
+  print("---------------------------")
   
   
   # Write Raw Data to a csv file
-  write_csv(file, raw_path)
+  write_csv(file, file_path)
   print("---------------------------")
   print("---------------------------")
   print("Raw Data Successfully Downloaded.")
-  print(paste("Downloaded Raw Data File saved in: ", raw_path, sep=" "))
+  print(paste("Downloaded Raw Data File saved in: ", file_path, sep=" "))
   print("---------------------------")
     
 
   # Test functions
-  test_raw_data(data_dir=raw_path)
+  test_raw_data(data_dir=file_path)
   
   
   print("-------------------------------------------")
@@ -81,4 +81,4 @@ test_raw_data <- function(data_dir){
 }
 
 
-main(opt$file_dir, opt$file_name)
+main(opt$file_path, opt$data_url)

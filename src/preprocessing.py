@@ -5,8 +5,8 @@
 Usage: preprocessing.py [--quebec_path=<quebec_path> --store_path=<store_path>]
 
 Options:
---quebec_path=<quebec_path> Relative file path for the quebec_df csv  [default: ../data/raw_quebec_city_airbnb_data.csv]
---store_path=<store_path>   Full path and file name to where the processed data should live and called [default: ../data/cleaned_data.csv]
+--quebec_path=<quebec_path> Relative file path for the quebec_df csv  [default: data/raw_quebec_city_airbnb_data.csv]
+--store_path=<store_path>   Full path and file name to where the processed data should live and called [default: data/cleaned_data.csv]
 '''
 
 #importing packages and libraries
