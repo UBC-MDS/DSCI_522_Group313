@@ -50,7 +50,9 @@ Open your terminal:
 ex)
 > python src/preprocessing.py --store_path="~/Desktop/my_file_name.csv"
 
-
+** The `X_train_...`, `y_train...`, `X_test...`, `y_test...` data files are stored in the same directory 
+as the processed data file. The directory is derived from the `store_path` by splitting it** 
+ 
 <br>
 
 ## How to generate EDA summary plots & tables
