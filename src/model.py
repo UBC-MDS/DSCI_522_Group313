@@ -4,8 +4,8 @@
 Usage: model.py [--source_file_location=<source_file_location>] [--target_location=<target_location>]
 
 Options:
--s --source_file_location=<source_file_location>   [default: ../data]
--t --target_location=<target_location>             [default: ../results]
+-s --source_file_location=<source_file_location>   [default: data]
+-t --target_location=<target_location>             [default: results]
 
 '''
 #Import Libraries
