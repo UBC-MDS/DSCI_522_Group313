@@ -1,7 +1,7 @@
 # author: Suvarna Moharir, Jaekeun Lee, Chimaobi Amadi
 # date: 2020-01-24
 '''
-Usage: model.py [--source_file_location=<source_file_location>] [--target_location=<target_location>]
+Usage: src/model.py [--source_file_location=<source_file_location>] [--target_location=<target_location>]
 
 Options:
 -s --source_file_location=<source_file_location>   [default: data]
@@ -21,6 +21,11 @@ import pandas as pd
 from selenium import webdriver
 from docopt import docopt
 
+def check_files():
+    assert len(pd.read_csv(input_dir + "/X_train.csv")) == 1755, "Wrong X_train file is loaded"
+    assert len(pd.read_csv(input_dir + "/X_test.csv")) == 439, "Wrong X_test file is loaded"
+    assert pd.read_csv(input_dir + "/X_test.csv").shape[1] == 74, "The number of columns for X_test is wrong"
+    
 def main(input_dir, output):
    
     #Load X_train, X_test
@@ -29,10 +34,7 @@ def main(input_dir, output):
     X_test = pd.read_csv(input_dir + "/X_test.csv")
     y_train = pd.read_csv(input_dir + "/y_train.csv")
     y_test = pd.read_csv(input_dir + "/y_test.csv")
-    
-    assert len(X_train) == 1755, "Wrong X_train file is loaded"
-    assert len(X_test) == 439, "Wrong X_test file is loaded"
-    assert X_test.shape[1] == 74, "The number of columns for X_test is wrong"
+   
     
     #Modelling using GridSearchCV
     ##SVR
