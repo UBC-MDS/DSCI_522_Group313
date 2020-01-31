@@ -6,8 +6,8 @@ Usage:
 
 Options:
 -h --help                         show this screen
--d --data_dir=<data_dir>          directory of the folder that has data [default: ../data/cleaned_data.csv]
--f --file_dir=<file_dir>          directory of the folder to save generated images/tables [default: ../eda/]
+-d --data_dir=<data_dir>          directory of the folder that has data [default: data/cleaned_data.csv]
+-f --file_dir=<file_dir>          directory of the folder to save generated images/tables [default: eda/]
 """
 
 
@@ -172,7 +172,7 @@ class EDA():
             # save plot
 
             i += 1
-            plot.save(self.file_dir+"respones_numerical_correlation_plot{}.html".format(i))
+            plot.save(self.file_dir+"response_numerical_correlation_plot{}.html".format(i))
             print("Plot saved")
 
 if __name__ == '__main__':

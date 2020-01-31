@@ -3,14 +3,14 @@
 #### load_data.R
 Open your terminal:
 
-1. Go to the project directory using command prompt:
+1. Go to the project root directory using command prompt:
 
->  cd YOUR_PATH/DSCI_522_Group313/src/
+>  cd YOUR_PATH/DSCI_522_Group313
 
 
 2. Execute the script using R (We have set the default values)
 
-> Rscript load_data.R
+> Rscript src/load_data.R
 
 
 3. You will be able to see the downloaded file on the "data" folder in the root project directory
@@ -39,18 +39,20 @@ Open your terminal:
 
 1. Go to the project directory using command prompt
 
->  cd YOUR_PATH/DSCI_522_Group313/src/
+>  cd YOUR_PATH/DSCI_522_Group313
 
 2. Execute the script using Python (We have set the default values)
 
-> python preprocessing.py
+> python src/preprocessing.py
 
 
 ** If you want to process data to a different folder as a different name use the arguments
 ex)
-> python preprocessing.py --store_path="~/Desktop/my_file_name.csv"
+> python src/preprocessing.py --store_path="~/Desktop/my_file_name.csv"
 
-
+** The `X_train_...`, `y_train...`, `X_test...`, `y_test...` data files are stored in the same directory 
+as the processed data file. The directory is derived from the `store_path` by splitting it** 
+ 
 <br>
 
 ## How to generate EDA summary plots & tables
@@ -65,15 +67,15 @@ Open your terminal
 
 1. Go to the project directory using command prompt
 
-> cd YOUR_PATH/DSCI_522_Group313/src/
+> cd YOUR_PATH/DSCI_522_Group313
 
 2. Execute the script using Python (we have set the default values)
 
-> python eda_summary.py
+> python src/eda_summary.py
 
 or
 
-> python eda_summary.py --data_dir="DIRECTORY_TO_PROCCESSED_DATA_FROM_SCRIPT_2" --file_dir="DIRECTORY_TO_SAVE_GENERATED_FILES"
+> python src/eda_summary.py --data_dir="DIRECTORY_TO_PROCCESSED_DATA_FROM_SCRIPT_2" --file_dir="DIRECTORY_TO_SAVE_GENERATED_FILES"
 
 <br>
 
