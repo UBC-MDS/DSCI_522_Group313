@@ -172,7 +172,7 @@ class EDA():
             # save plot
 
             i += 1
-            plot.save(self.file_dir+"respones_numerical_correlation_plot{}.html".format(i))
+            plot.save(self.file_dir+"response_numerical_correlation_plot{}.html".format(i))
             print("Plot saved")
 
 if __name__ == '__main__':

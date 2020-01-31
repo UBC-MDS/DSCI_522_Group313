@@ -1,18 +1,23 @@
-results/feature_importance_rfr.dat : data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv src/model.py
-	python src/model.py data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv
+.PHONY : all
+all: data/X_train.csv eda/corr_table.csv
 
-results/feature_importance_rfr.csv : results/feature_importance_rfr.dat src/model.py
-	python src/model.py data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv
-	
-	
-results/figure/isles.png : results/isles.dat src/plotcount.py
-	python src/plotcount.py results/isles.dat results/figure/isles.png	
+# Raw Data Download
+data/raw_quebec_city_airbnb_data.csv : src/load_data.R
+	Rscript src/load_data.R
 
-results/feature_importance_xgb.dat : data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv src/model.py
-	python src/model.py data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv
-	
-results/score_plot.dat : data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv src/model.py
-	python src/model.py data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv
-	
-results/summary_df.dat : data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv src/model.py
-	python src/model.py data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv
+# Cleaned Dataset
+data/cleaned_data.csv : src/preprocessing.py data/raw_quebec_city_airbnb_data.csv
+	python src/preprocessing.py
+
+# Training & Testing Dataset 
+data/X_train.csv data/y_train.csv data/X_test.csv data/y_test.csv : src/preprocessing.py data/cleaned_data.csv
+	python src/preprocessing.py
+
+# EDA summary
+eda/descriptive_statistics.csv eda/corr_table.csv eda/response_categorical_correlation_plot.html eda/response_numerical_correlation_plot1.html eda/response_numerical_correlation_plot2.html eda/response_numerical_correlation_plot3.html eda/response_numerical_correlation_plot4.html eda/response_numerical_correlation_plot5.html : src/eda_summary.py data/cleaned_data.csv
+	python src/eda_summary.py
+
+# Model
+
+clean :
+	rm data/raw_quebec_city_airbnb_data.csv
