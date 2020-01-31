@@ -1,5 +1,5 @@
 .PHONY : all
-all: data/X_train.csv eda/corr_table.csv
+all: data/X_train.csv eda/corr_table.csv results/score_plot.png
 
 # Raw Data Download
 data/raw_quebec_city_airbnb_data.csv : src/load_data.R
@@ -18,6 +18,7 @@ eda/descriptive_statistics.csv eda/corr_table.csv eda/response_categorical_corre
 	python src/eda_summary.py
 
 # Model
-
+results/feature_importance_rfr.csv results/feature_importance_xgb.csv results/summary_df results/score_plot.png : data/X_train.csv data/X_test.csv data/y_train.csv data/y_test.csv
+	python src/model.py 
 clean :
-	rm data/raw_quebec_city_airbnb_data.csv
+	rm data/raw_quebec_city_airbnb_data.csv results/*.csv results/*.png 	

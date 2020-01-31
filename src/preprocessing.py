@@ -88,13 +88,13 @@ def main(quebec_path, store_path):
     folder_dir = "/".join(store_path.split("/")[:-1])
     file_name = store_path.split("/")[-1]
 
-    X_train.to_csv(folder_dir+"/" + "X_train.csv", index = True)
-    y_train.to_csv(folder_dir+"/" + "y_train.csv", index = True, header = True)
+    X_train.to_csv(folder_dir+"/" + "X_train.csv", index = False)
+    y_train.to_csv(folder_dir+"/" + "y_train.csv", index = False, header = True)
 
-    X_test.to_csv(folder_dir+"/" + "X_test.csv", index = True)
-    y_test.to_csv(folder_dir+"/" + "y_test.csv", index = True, header = True)
+    X_test.to_csv(folder_dir+"/" + "X_test.csv", index = False)
+    y_test.to_csv(folder_dir+"/" + "y_test.csv", index = False, header = True)
 
-    quebec_df.to_csv(store_path, index = True, header = True)
+    quebec_df.to_csv(store_path, index = False, header = True)
 
 if __name__ == "__main__":
     main(opt["--quebec_path"], opt["--store_path"]) 
