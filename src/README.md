@@ -100,7 +100,7 @@ Open your terminal
 
 OR
 
-> python model.py --source_file_location="../data" --target_location="../results"
+> python model.py --source_file_location="data" --target_location="results"
 
 
 <br>
