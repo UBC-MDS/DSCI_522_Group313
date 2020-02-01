@@ -8,8 +8,10 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 
 ```
 .
+├── Makefile
 ├── README.md
 ├── data
+│   └── README.md
 ├── docs
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
@@ -22,7 +24,9 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 │   └── README.md
 ├── results
 │   ├── README.md
-│   └── score_plot.png
+│   ├── price_linearanalysis.PNG
+│   ├── score_plot.png
+│   └── score_summary.png
 └── src
     ├── README.md
     ├── eda_summary.py
