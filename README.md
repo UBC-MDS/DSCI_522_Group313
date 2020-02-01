@@ -64,7 +64,25 @@ This analysis could prove useful for 2 major groups of individuals: (1) individu
 
 ## Usage
 
-Please refer to the [README.md file in the src folder of this repo](https://github.com/UBC-MDS/DSCI_522_Group313/tree/master/src). 
+1. Go to the project root directory in your command prompt
+
+> $ cd ~/YOUR_PATH/DSCI_522_Group313
+
+
+
+2. Execute the Makefile with `all` command for the entire process
+
+> $ make all
+
+
+
+3. Use `clean` command to delete raw datafile and results
+
+> $ make clean
+
+
+
+**For a detailed description of each scripts, please refer to the [README.md file in the src folder of this repo](https://github.com/UBC-MDS/DSCI_522_Group313/tree/master/src). **
 
 <br>
 
