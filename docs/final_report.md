@@ -130,7 +130,7 @@ Regressor is {‘max\_depth’: 25, ‘max\_features’: ‘sqrt’,
 
 For the Random Forest Regressor, the 10 most important features were:
 
-1.  `accomodates`, the number of individuals the unit can accomodate.
+1.  `accommodates`, the number of individuals the unit can accomodate.
 
 2.  `bathrooms`, the number of bathrooms in the unit.
 
