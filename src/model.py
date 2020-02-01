@@ -107,10 +107,10 @@ def main(input_dir, output):
         x='test_scores:Q',
         color='model:N')
     
-    #plot.save('chart.png')   
+      
     with alt.data_transformers.enable('default'):
             score_plot.save(
-                output + "/score_plot.png"
+                output + "/score_plot.html"
             )
     print("=============================")
     print("Model successfully completed!")  
