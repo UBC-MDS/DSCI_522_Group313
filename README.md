@@ -8,8 +8,10 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 
 ```
 .
+├── Makefile
 ├── README.md
 ├── data
+│   └── README.md
 ├── docs
 │   ├── CODE_OF_CONDUCT.md
 │   ├── CONTRIBUTING.md
@@ -22,7 +24,9 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 │   └── README.md
 ├── results
 │   ├── README.md
-│   └── score_plot.png
+│   ├── price_linearanalysis.PNG
+│   ├── score_plot.png
+│   └── score_summary.png
 └── src
     ├── README.md
     ├── eda_summary.py
@@ -60,7 +64,25 @@ This analysis could prove useful for 2 major groups of individuals: (1) individu
 
 ## Usage
 
-Please refer to the [README.md file in the src folder of this repo](https://github.com/UBC-MDS/DSCI_522_Group313/tree/master/src). 
+1. Go to the project root directory in your command prompt
+
+> $ cd ~/YOUR_PATH/DSCI_522_Group313
+
+
+
+2. Execute the Makefile with `all` command for the entire process
+
+> $ make all
+
+
+
+3. Use `clean` command to delete raw datafile and results
+
+> $ make clean
+
+
+
+**For a detailed description of each scripts, please refer to the [README.md file in the src folder of this repo](https://github.com/UBC-MDS/DSCI_522_Group313/tree/master/src). **
 
 <br>
 
