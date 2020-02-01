@@ -92,11 +92,11 @@ Open your terminal
 
 1. Go to the project directory using command prompt
 
-> cd YOUR_PATH/DSCI_522_Group313/src/
+> cd YOUR_PATH/DSCI_522_Group313
 
 2. Execute the script using Python (we have set the default values)
 
-> python model.py
+> python src/model.py
 
 OR
 
