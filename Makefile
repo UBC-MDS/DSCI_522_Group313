@@ -1,3 +1,7 @@
+## Authors: Jaekeun Lee, Suvarna Moharir  Chimaobi Amadi
+## Date: 2020-01-28
+## Summary: This script downloads and processes data, generate plots automatically, perform analysis and final report
+
 .PHONY : all
 all: data/X_train.csv eda/corr_table.csv results/score_plot.html
 

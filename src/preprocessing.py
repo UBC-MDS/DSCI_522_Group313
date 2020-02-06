@@ -85,8 +85,10 @@ def main(quebec_path, store_path):
 
     #converting to csv
 
+    ### The training and testing data live in the same directory as the processed datafile
+    ### From the store_path, the closest parent directory is selected by splitting the store_path with "/"
     folder_dir = "/".join(store_path.split("/")[:-1])
-    file_name = store_path.split("/")[-1]
+
 
     X_train.to_csv(folder_dir+"/" + "X_train.csv", index = False)
     y_train.to_csv(folder_dir+"/" + "y_train.csv", index = False, header = True)
