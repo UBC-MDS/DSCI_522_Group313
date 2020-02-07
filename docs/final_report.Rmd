@@ -46,7 +46,7 @@ From these distributions, it was clear that a multiple linear regression model w
 
 ![img](../eda/heatmap.png)
 
-*Figure 1_2: Heatmap of pearson correlation coefficient between selected variables + response
+*Figure 1_2: Heatmap of pearson correlation coefficient between selected variables + response*
 
 From the heatmap, we can clearly see that response doesn't have strong linear relationship with any of the variables. Also, we can vividly see the high correlation clusters formed. 
 

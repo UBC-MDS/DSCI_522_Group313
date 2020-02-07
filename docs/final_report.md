@@ -76,14 +76,26 @@ and `beds` (the number of beds)).
 Shown below is an example of a plot from the EDA, displaying the lack of
 linear relationships:
 
-![img](../results/price_linearanalysis.PNG) *Figure 1: Plot from
-exploratory data analysis displaying relationships between response
-(price) and some features.*
+![img](../eda/price_linearanalysis1.png)
+![img](../eda/price_linearanalysis2.png)
+![img](../eda/price_linearanalysis3.png)
+
+*Figure 1\_1: Plot from exploratory data analysis displaying
+relationships between response (price) and some features.*
 
 From these distributions, it was clear that a multiple linear regression
 model would not be a good fit for our data. Thus, other regression
 methods (Random Forest Regression, XGB Regression, Support Vector
 Regression) were taken into consideration.
+
+![img](../eda/heatmap.png)
+
+*Figure 1\_2: Heatmap of pearson correlation coefficient between
+selected variables + response*
+
+From the heatmap, we can clearly see that response doesn’t have strong
+linear relationship with any of the variables. Also, we can vividly see
+the high correlation clusters formed.
 
 ### Analysis
 
@@ -155,9 +167,10 @@ For the Random Forest Regressor, the 10 most important features were:
     received each month.
 
 The following image summarizes the top 10 features as well as their
-feature scores: ![img](../results/score_summary.png) *Figure 3: Summary
-of the 10 most important features from the Random Forest Regressor, as
-well as their feature scores.*
+feature scores: ![img](../results/score_summary.png)
+
+*Figure 3: Summary of the 10 most important features from the Random
+Forest Regressor, as well as their feature scores.*
 
 This shows that, perhaps new hosts could increse the number of units
 they have up on Airbnb, as well as potentially increasing the number of
@@ -190,7 +203,7 @@ only apply to the Quebec City data set.
 
 ## References
 
-<div id="refs" class="references">
+<div id="refs" class="references hanging-indent">
 
 <div id="ref-airbnb2019airbnb">
 
