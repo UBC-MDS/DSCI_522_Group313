@@ -37,9 +37,7 @@ RUN conda install -y -c conda-forge altair && conda install -y vega_datasets && 
 
 #installing docopt python package
 RUN conda install -y -c anaconda \ 
-    docopt \
-    requests
-    
+ 
 #adding required python packages 
 RUN conda install -y pandas && \
   conda install -y numpy && \
@@ -48,7 +46,11 @@ RUN conda install -y pandas && \
   conda install -y selenium && \
   conda install -y xgboost && \
   conda install -y ChromeDriver && \
-  conda install -y matplotlib
+  conda install -y matplotlib && \
+  conda install -y -c anaconda python && \
+  conda install -y -c anaconda docopt \
+    requests
 
 
 CMD ["/bin/bash"]
+
