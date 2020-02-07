@@ -105,3 +105,7 @@ The final report can be found [here](https://github.com/UBC-MDS/DSCI_522_Group31
     - matplotlib == 3.1.2 
     - scikit-learn == 0.22.1
     - feather == 0.4.0
+    - selenium == 3.141.0
+
+## Makefile Graph
+![img](Makefile.png)
