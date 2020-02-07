@@ -31,12 +31,8 @@ RUN apt-get update && apt install -y chromium && apt-get install -y libnss3 && a
 RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
     && unzip /tmp/chromedriver.zip -d /usr/bin/ \
     && rm /tmp/chromedriver.zip && chown root:root /usr/bin/chromedriver && chmod +x /usr/bin/chromedriver
-
-#installing altair and selenium 
-RUN conda install -y -c conda-forge altair && conda install -y vega_datasets && conda install -y selenium
-
  
-#adding required python packages 
+#Installing python and the required python packages 
 
 RUN conda install -y -c anaconda \ 
     docopt \
@@ -46,12 +42,13 @@ RUN conda install -y -c anaconda \
     conda install -y -c conda-forge/label/gcc7 xgboost && \
     conda install -y numpy && \
     conda install -y scikit-learn && \
-    conda install -y altair 
-
+    conda install -y altair && \
+    conda install -y vega_datasets
+    
+    
 RUN conda install -y -c conda-forge/label/gcc7 selenium && \
     conda install -y -c conda-forge python-chromedriver-binary && \
     conda install -y -c conda-forge matplotlib
 
 
 CMD ["/bin/bash"]
-
