@@ -35,21 +35,22 @@ RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriv
 #installing altair and selenium 
 RUN conda install -y -c conda-forge altair && conda install -y vega_datasets && conda install -y selenium
 
-#installing docopt python package
-RUN conda install -y -c anaconda \ 
  
 #adding required python packages 
-RUN conda install -y pandas && \
-  conda install -y numpy && \
-  conda install -y scikit-learn && \
-  conda install -y altair && \
-  conda install -y selenium && \
-  conda install -y xgboost && \
-  conda install -y ChromeDriver && \
-  conda install -y matplotlib && \
-  conda install -y -c anaconda python && \
-  conda install -y -c anaconda docopt \
-    requests
+
+RUN conda install -y -c anaconda \ 
+    docopt \
+    requests && \
+    conda install -y -c anaconda python && \
+    conda install -y -c anaconda pandas && \
+    conda install -y -c conda-forge/label/gcc7 xgboost && \
+    conda install -y numpy && \
+    conda install -y scikit-learn && \
+    conda install -y altair 
+
+RUN conda install -y -c conda-forge/label/gcc7 selenium && \
+    conda install -y -c conda-forge python-chromedriver-binary && \
+    conda install -y -c conda-forge matplotlib
 
 
 CMD ["/bin/bash"]
