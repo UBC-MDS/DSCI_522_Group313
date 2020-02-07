@@ -36,10 +36,21 @@ During our exploratory data analysis, we generated scatter plots in order to exa
 
 Shown below is an example of a plot from the EDA, displaying the lack of linear relationships: 
 
-![img](../results/price_linearanalysis.PNG)
-*Figure 1: Plot from exploratory data analysis displaying relationships between response (price) and some features.*
+![img](../eda/price_linearanalysis1.png)
+![img](../eda/price_linearanalysis2.png)
+![img](../eda/price_linearanalysis3.png)
+
+*Figure 1_1: Plot from exploratory data analysis displaying relationships between response (price) and some features.*
 
 From these distributions, it was clear that a multiple linear regression model would not be a good fit for our data. Thus, other regression methods (Random Forest Regression, XGB Regression, Support Vector Regression) were taken into consideration. 
+
+![img](../eda/heatmap.png)
+
+*Figure 1_2: Heatmap of pearson correlation coefficient between selected variables + response
+
+From the heatmap, we can clearly see that response doesn't have strong linear relationship with any of the variables. Also, we can vividly see the high correlation clusters formed. 
+
+
 
 ### Analysis
 For our model prediction, we have chosen Random Forest Regressor, XGBRegressor, and Support Vector Regressor as our models, in conjunction with cross validation technique using GridSearchCV. Cross validation helped in tuning different parameters to ensure optimal choice and results. We also chose the default accuracy metric. We have chosen these models because they have proven to have better predictive performances than other regressors, and because linear regression was not an option since our exploratory data analysis revealed an unclear linear relationship with our response variable `price`.
@@ -82,6 +93,7 @@ For the Random Forest Regressor, the 10 most important features were:
 
 The following image summarizes the top 10 features as well as their feature scores: 
 ![img](../results/score_summary.png)
+
 *Figure 3: Summary of the 10 most important features from the Random Forest Regressor, as well as their feature scores.* 
 
 This shows that, perhaps new hosts could increse the number of units they have up on Airbnb, as well as potentially increasing the number of bathrooms in the unit, as well as increasing the number of individuals that can stay in the unit. They could also encourage their renters to leave a review of the unit on the Airbnb website. The longitude and latitude are not changeable, but perhaps a host could look into the latitude and longitude of a new property they are planning on purchasing if they intend to rent it out as an Airbnb. 
