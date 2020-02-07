@@ -21,10 +21,10 @@ import pandas as pd
 from selenium import webdriver
 from docopt import docopt
 
-def check_files():
+def check_files(input_dir, output):
     assert len(pd.read_csv(input_dir + "/X_train.csv")) == 1755, "Wrong X_train file is loaded"
     assert len(pd.read_csv(input_dir + "/X_test.csv")) == 439, "Wrong X_test file is loaded"
-    assert pd.read_csv(input_dir + "/X_test.csv").shape[1] == 74, "The number of columns for X_test is wrong"
+    assert pd.read_csv(input_dir + "/X_test.csv").shape[1] == 75, "The number of columns for X_test is wrong"
     
 def main(input_dir, output):
    
@@ -116,7 +116,10 @@ def main(input_dir, output):
     print("Model successfully completed!")  
     print("=============================")
 
-
+#check_files()
 
 opt = docopt(__doc__)
+
+check_files(opt['--source_file_location'], opt['--target_location'])
+
 main(opt['--source_file_location'], opt['--target_location'])
