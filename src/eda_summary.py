@@ -94,6 +94,7 @@ class EDA():
         > a = EDA("~/Desktop/data_file.csv")
         > a.corr_table()
         """
+        self.metric=metric
         columns = self.data.columns
         correlation_table = self.data[columns].corr(method=metric)
         correlation_table.to_csv(self.file_dir+"corr_table.csv")
@@ -152,7 +153,7 @@ class EDA():
 
         # save plot
 
-        plot.save(self.file_dir+"response_categorical_correlation_plot.html".format(i))
+        plot.save(self.file_dir+"response_categorical_correlation_plot.png")
         print("Plot saved")
 
         i = 0
@@ -172,8 +173,56 @@ class EDA():
             # save plot
 
             i += 1
-            plot.save(self.file_dir+"response_numerical_correlation_plot{}.html".format(i))
+            plot.save(self.file_dir+"response_numerical_correlation_plot{}.png".format(i))
             print("Plot saved")
+
+        subset_col = ['host_response_rate', 'host_is_superhost', 'host_listings_count', 'host_has_profile_pic',
+                            'host_identity_verified', 'latitude', 'longitude', 'is_location_exact', 'accommodates',
+                            'bathrooms', 'bedrooms', 'beds', 'guests_included', 'extra_people', 'minimum_nights',
+                            'maximum_nights', 'availability_30', 'availability_60',
+                            'availability_90', 'availability_365', 'number_of_reviews', 'number_of_reviews_ltm',
+                            'instant_bookable','require_guest_profile_picture', 'require_guest_phone_verification',
+                            'calculated_host_listings_count', 'calculated_host_listings_count_entire_homes',
+                            'calculated_host_listings_count_private_rooms',
+                            'calculated_host_listings_count_shared_rooms', 'reviews_per_month']
+
+        heatmap_df = self.data[subset_col].corr(self.metric).round(2).reset_index().rename(columns = {'index':'Var1'}).melt(id_vars = ['Var1'],
+                                                                                 value_name = 'Correlation',
+                                                                                 var_name = 'Var2')
+        heatmap = alt.Chart(heatmap_df).mark_rect().encode(
+                                        alt.Y('Var1:N', title=''),
+                                        alt.X('Var2:N', title='', axis=alt.Axis(labelAngle=45)),
+                                        alt.Color('Correlation:Q', scale=alt.Scale(scheme='viridis'))
+        )
+        # Add the correlation values as a text mark
+        text = heatmap.mark_text(baseline='middle', fontSize=8).encode(
+            text=alt.Text('Correlation:Q', format='.2'),
+            color=alt.condition(
+                alt.datum.Correlation >= 0.95,
+                alt.value('black'),
+                alt.value('white')
+            )
+        )
+
+        # Set the height, width, title and other properties
+        corrMatrix_chart = (heatmap + text).properties(
+            background='white',
+            width=1200,
+            height=1200,
+            title="Correlation Heatmap of all variables",
+        ).configure_axis(
+            labelFontSize=15,
+            titleFontSize=48,
+        ).configure_title(
+            fontSize=48,
+            anchor='middle',
+        ).configure_legend(
+            labelFontSize=12,
+            titleFontSize=15)
+
+        corrMatrix_chart.save(self.file_dir + "heatmap.png")
+        print("Heatmap Plot saved")
+
 
 if __name__ == '__main__':
     main()

@@ -39,13 +39,13 @@ def main(input_dir, output):
     #Modelling using GridSearchCV
     ##SVR
     print("Running Support Vector Regressor")
-    param_grid = {'kernel':['rbf', 'sigmoid'], 
-                'C':[0.1, 1, 10, 100, 1000, 5000], 
+    param_grid = {'kernel':['rbf', 'poly'],
+                'C':[0.1, 1, 10, 100],
                 'gamma': ['auto', 'scale']}
     
     svr = SVR()
     
-    clf = GridSearchCV(svr, param_grid, cv = 5)
+    clf = GridSearchCV(svr, param_grid, cv = 4)
     clf.fit(X_train, y_train.to_numpy().ravel())
     #clf.fit(X_train, y_train)
     
@@ -60,13 +60,12 @@ def main(input_dir, output):
     
     estimator = RandomForestRegressor()
     param_grid2 = { 
-                "n_estimators"      : [10,50,100, 150],
+                "n_estimators"      : [100, 200, 300],
                 "max_features"      : ["auto", "sqrt", "log2"],
-                "min_samples_split" : [2,4,8],
-                "max_depth"         : [1, 10, 25]
+                "min_samples_split" : [2,3,4]
                 }
     
-    grid = GridSearchCV(estimator, param_grid2, n_jobs=-1, cv=5)
+    grid = GridSearchCV(estimator, param_grid2, cv=4)
     
     grid.fit(X_train, y_train.to_numpy().ravel())
     
@@ -101,16 +100,29 @@ def main(input_dir, output):
                   'test_scores'  : [grid.score(X_test, y_test), clf.score(X_test, y_test), xgb.score(X_test, y_test)]
                  })
     summary_df.to_csv(output + "/summary_df.csv", index=False)
+
+
     #Plot
     score_plot = alt.Chart(summary_df).mark_bar().encode(
-        y='model:N',
-        x='test_scores:Q',
+        x=alt.X('test_scores:Q'),
+        y=alt.Y('model:N', sort=alt.EncodingSortField(field="test_scores", order='descending')),
+
         color='model:N')
     
-      
+    best_features = feature_importance_rfr.iloc[:10,:]
+    feature_summary = alt.Chart(best_features).mark_bar().encode(
+        x=alt.X('scores:Q', title="importance score"),
+        y=alt.Y('feature:N', sort=alt.EncodingSortField(field="scores", order='descending')),
+        color=alt.Color('feature:N')
+    )
+
     with alt.data_transformers.enable('default'):
             score_plot.save(
-                output + "/score_plot.html"
+                output + "/score_plot.png"
+            )
+
+            feature_summary.save(
+                output + "/score_summary.png"
             )
     print("=============================")
     print("Model successfully completed!")  
