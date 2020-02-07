@@ -1,5 +1,15 @@
-FROM rocker/tidyverse
+#Docker File: Airbnb Price Predictor
+#Authors: Group 313 - Suvarna Moharir, Jaekeun Lee, Chimaobi Amadi
 
+#use rocker/tidyverse as the base image
+FROM rocker/tidyverse
+RUN apt-get update
+RUN apt-get install r-base r-base-dev -y
+
+#installing required R packages
+RUN Rscript -e "install.packages('testthat')"
+
+#installing the anaconda distribution of python
 RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh && \
@@ -11,18 +21,34 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_6
     /opt/conda/bin/conda clean -afy && \
     /opt/conda/bin/conda update -n base -c defaults conda
 
-# put anaconda python in path
+#putting anaconda python in path
 ENV PATH="/opt/conda/bin:${PATH}"
-   
-RUN apt-get update
 
-RUN apt-get install r-base r-base-dev -y
+#installing chromium and unzipper    
+RUN apt-get update && apt install -y chromium && apt-get install -y libnss3 && apt-get install unzip
 
-RUN Rscript -e "install.packages('testthat')"
+#installing chromedriver
+RUN wget -q "https://chromedriver.storage.googleapis.com/79.0.3945.36/chromedriver_linux64.zip" -O /tmp/chromedriver.zip \
+    && unzip /tmp/chromedriver.zip -d /usr/bin/ \
+    && rm /tmp/chromedriver.zip && chown root:root /usr/bin/chromedriver && chmod +x /usr/bin/chromedriver
+
+#installing altair and selenium 
+RUN conda install -y -c conda-forge altair && conda install -y vega_datasets && conda install -y selenium
 
 #installing docopt python package
 RUN conda install -y -c anaconda \ 
-    docopt 
+    docopt \
+    requests
     
-RUN conda install scikit-learn
-RUN conda install -y -c pandas xgboost altair selenium
+#adding required python packages 
+RUN conda install -y pandas && \
+  conda install -y numpy && \
+  conda install -y scikit-learn && \
+  conda install -y altair && \
+  conda install -y selenium && \
+  conda install -y xgboost && \
+  conda install -y ChromeDriver && \
+  conda install -y matplotlib
+
+
+CMD ["/bin/bash"]
