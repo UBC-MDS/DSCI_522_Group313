@@ -22,7 +22,12 @@ RUN Rscript -e "install.packages('testthat')"
 
 #installing docopt python package
 RUN conda install -y -c anaconda \ 
-    docopt 
+    docopt && \
+    python
     
 RUN conda install scikit-learn
-RUN conda install -y -c pandas xgboost altair selenium
+RUN conda install -y -c anaconda python
+RUN conda install -y -c pandas 
+Run conda install -y -c yconda-forge xgboost  
+RUN conda install -y -c conda-forge altair
+RUN conda install -c conda-forge selenium
