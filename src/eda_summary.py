@@ -114,67 +114,48 @@ class EDA():
         > a.corr_plots
         """
 
-        categorical_features = ['host_response_time', 'property_type', 'room_type', 'bed_type']
-        numeric_features = ['host_response_rate', 'host_is_superhost', 'host_listings_count', 'host_has_profile_pic',
-                            'host_identity_verified', 'latitude', 'longitude', 'is_location_exact', 'accommodates',
-                            'bathrooms', 'bedrooms', 'beds', 'guests_included', 'extra_people', 'minimum_nights',
-                            'maximum_nights', 'has_availability', 'availability_30', 'availability_60',
-                            'availability_90', 'availability_365', 'number_of_reviews', 'number_of_reviews_ltm',
-                            'review_scores_rating', 'review_scores_accuracy', 'review_scores_cleanliness',
-                            'review_scores_checkin', 'review_scores_communication', 'review_scores_location',
-                            'review_scores_value', 'requires_license', 'instant_bookable', 'is_business_travel_ready',
-                            'require_guest_profile_picture', 'require_guest_phone_verification',
-                            'calculated_host_listings_count', 'calculated_host_listings_count_entire_homes',
-                            'calculated_host_listings_count_private_rooms',
-                            'calculated_host_listings_count_shared_rooms', 'reviews_per_month']
+        numeric_features = ['accommodates','bathrooms', 'bedrooms',
+                            'beds', 'extra_people', 'minimum_nights',
+                            'maximum_nights', 'has_availability', 'availability_30']
 
         # Specify response & predictor
         response = "price"
 
         # Seperate list for categorical & numerical features
         num_index = list(range(len(numeric_features)))
-        group_num_index = np.array_split(num_index, 5)
+        group_num_index = np.array_split(num_index, 3)
         num_groups = [[numeric_features[i] for i in x] for x in group_num_index]
 
-        i = 0
-
-        # Price vs Categorical Plots
-
-        plot = alt.Chart(self.data).mark_circle().encode(
-                                              alt.X(alt.repeat("column"), type="nominal"),
-                                              alt.Y(alt.repeat("row"), type="quantitative")
-        ).properties(
-        width=150,
-        height=150
-        ).repeat(
-        row = [response],
-        column = categorical_features
-        ).interactive()
-
-        # save plot
-
-        plot.save(self.file_dir+"response_categorical_correlation_plot.png")
-        print("Plot saved")
 
         i = 0
         # Numerical Plots
         for predictor_group in num_groups:
-            plot = alt.Chart(self.data).mark_circle().encode(
-                                                  alt.X(alt.repeat("column"), type="quantitative"),
-                                                  alt.Y(alt.repeat("row"), type="quantitative")
-            ).properties(
-            width=150,
-            height=150
-            ).repeat(
-            row = [response] + predictor_group,
-            column = [response] + predictor_group
+            base = alt.Chart(self.data).mark_circle(opacity=0.3).encode(
             ).interactive()
+
+            plot = alt.vconcat(data=self.data).configure_axis(
+                                                labelFontSize=15,
+                                                titleFontSize=24,
+                                                ).configure_title(
+                                                    fontSize=24,
+                                                    anchor='middle'
+                                                )
+            for y_encoding in [response]:
+                row = alt.hconcat().properties(
+                    title="Scatterplot between Price & Predictors"
+                                )
+                for x_encoding in predictor_group:
+                    row |= base.encode(x=x_encoding+":Q", y=y_encoding+":Q")
+                plot &= row
+
 
             # save plot
 
             i += 1
-            plot.save(self.file_dir+"response_numerical_correlation_plot{}.png".format(i))
+            plot.save(self.file_dir+"price_linearanalysis{}.png".format(i))
             print("Plot saved")
+
+        # HEATMAP PLOT
 
         subset_col = ['host_response_rate', 'host_is_superhost', 'host_listings_count', 'host_has_profile_pic',
                             'host_identity_verified', 'latitude', 'longitude', 'is_location_exact', 'accommodates',

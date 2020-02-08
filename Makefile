@@ -18,7 +18,7 @@ data/X_train.csv data/y_train.csv data/X_test.csv data/y_test.csv : src/preproce
 	python src/preprocessing.py
 
 # EDA summary
-eda/descriptive_statistics.csv eda/corr_table.csv eda/response_categorical_correlation_plot.png eda/response_numerical_correlation_plot1.png eda/response_numerical_correlation_plot2.png eda/response_numerical_correlation_plot3.png eda/response_numerical_correlation_plot4.png eda/response_numerical_correlation_plot5.png : src/eda_summary.py data/cleaned_data.csv
+eda/descriptive_statistics.csv eda/corr_table.csv heatmap.png price_linearanalysis1.png price_linearanalysis2.png price_linearanalysis3.png : src/eda_summary.py data/cleaned_data.csv
 	python src/eda_summary.py
 
 # Model
