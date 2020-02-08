@@ -1,29 +1,28 @@
 Final Report
 ================
-Group 313
-25/01/2020
+Suvarna Moharir, Jaekeun Lee, and Chimaobi Amadi .
+07-February-2020
 
 # Finding the best predictors of the per-night Airbnb price in Quebec City, QC.
 
 ## Summary
 
-In our model, we built a regresion model using a Random Forest
+In our model, we built a regression model using a Random Forest
 Regressor, XGB Regressor, and Support Vector Regression, along with
 cross-validation with GridSearchCV. The best model (best test score) was
-the Random Forest Regressor, which had a test accuracy of 75%. We did
-not implement model selection and features engineering, but plan to
-incorporate these concepts as well as test reproducibility of our
-findings on other AirBnb datasets.
+the Random Forest Regressor. We did not implement model selection and
+features engineering, but plan to incorporate these concepts as well as
+test reproducibility of our findings on other AirBnb datasets.
 
 ## Introduction
 
 The Airbnb rental market has grown immensely since its inception in
 2008. As of 2019, there are more than 7 million listings worldwide, and
-on average, there are 2 million people staying in an Airbnb per night.
-(Airbnb (2019)) Those renting out their properties as Airbnbs are called
-hosts, and are able to set and adjust their own prices. These often
-serve as an important source of secondary, or even primary income for
-hosts. There are many different factors that determine whether an
+on average, there are 2 million people staying in an Airbnb per night
+(Airbnb (2019)). Those renting out their properties as Airbnbs are
+called hosts, and are able to set and adjust their own prices. These
+often serve as an important source of secondary, or even primary income
+for hosts. There are many different factors that determine whether an
 individual will choose to rent an Airbnb or not, and new hosts often
 struggle with setting a fair and competitive price. There have been some
 peer-reviewed studies done in the past examining what the most important
@@ -33,10 +32,10 @@ Fleischer, and Magen (2016)).
 
 Here, we try to determine the most important predictors for the
 per-night price of an Airbnb in Quebec City. Answering this question is
-important because could help new hosts determine what price to set their
-rental at, as well as could help existing hosts determine what the most
-high-yield improvements could be if they’d like to raise the per-night
-price of their unit.
+important because it could help new hosts determine what price to set
+their rental at, as well as could help existing hosts determine what the
+most high-yield improvements could be if they would like to raise the
+per-night price of their unit.
 
 ## Methods
 
@@ -80,7 +79,7 @@ linear relationships:
 ![img](../eda/price_linearanalysis2.png)
 ![img](../eda/price_linearanalysis3.png)
 
-*Figure 1\_1: Plot from exploratory data analysis displaying
+*Figure 1.1: Plot from exploratory data analysis displaying
 relationships between response (price) and some features.*
 
 From these distributions, it was clear that a multiple linear regression
@@ -90,8 +89,8 @@ Regression) were taken into consideration.
 
 ![img](../eda/heatmap.png)
 
-*Figure 1\_2: Heatmap of pearson correlation coefficient between
-selected variables + response*
+*Figure 1.2: Heatmap of pearson correlation coefficient between selected
+variables + response*
 
 From the heatmap, we can clearly see that response doesn’t have strong
 linear relationship with any of the variables. Also, we can vividly see
@@ -99,15 +98,11 @@ the high correlation clusters formed.
 
 ### Analysis
 
-For our model prediction, we have chosen Random Forest Regressor,
-XGBRegressor, and Support Vector Regressor as our models, in conjunction
-with cross validation technique using GridSearchCV. Cross validation
-helped in tuning different parameters to ensure optimal choice and
-results. We also chose the default accuracy metric. We have chosen these
-models because they have proven to have better predictive performances
-than other regressors, and because linear regression was not an option
-since our exploratory data analysis revealed an unclear linear
-relationship with our response variable `price`.
+For our model prediction, we chose the 3 aforementioned models (Random
+Forest Regressor, XGBRegressor, and Support Vector Regressor) as our
+models, in conjunction with a cross validation technique using
+GridSearchCV. Cross validation helped in tuning different parameters to
+ensure optimal choice and results.
 
 The R (R Core Team (2019)) and Python (Van Rossum and Drake (2009))
 programming languages and the following R and Python packages were used
@@ -115,30 +110,37 @@ to perform the analysis: Xgboost(Chen and Guestrin (2016)), docopt(de
 Jonge (2018)), Matplotlib (Hunter (2007)), tidyverse (Wickham (2011)),
 Pandas (McKinney and others (2011)), Altair (VanderPlas et al. (2018)),
 scikit-learn (Pedregosa et al. (2011)), Numpy (Walt, Colbert, and
-Varoquaux (2011)), and feather (McKinney (2019)). The code used to
-perform the analysis and create this report is available
-[here](https://github.com/UBC-MDS/DSCI_522_Group313).
+Varoquaux (2011)), feather (McKinney (2019)), and selenium(Percival
+(2014)).
+
+The code used to perform the analysis and create this report is
+available [here](https://github.com/UBC-MDS/DSCI_522_Group313).
 
 ## Results and Discussion
 
 As a result of hyperparameter optimization, the model takes
 approximately 48 seconds to run and it fits different models and
-hyperparameters. The best model turns out to be Random Forest Regressor
-with test accuracy of 75%, followed by Support Vector Regressor with
-test accuracy of 66% and lastly XGBRegressor which was run without
-hyperparameter optimization as a control model with test accuracy of
-63%. The makefile takes about 135 seconds (2 minutes, 15 seconds) to
+hyperparameters. The best model was the Random Forest Regressor with
+test accuracy of 54%, followed by XGBRegressor with test accuracy, of
+51%, and lastly, Support Vector Regressor which was run without
+hyperparameter optimization as a control model, with a test accuracy of
+36%. The makefile takes about 135 seconds (2 minutes, 15 seconds) to
 run.
 
 ![img](../results/score_plot.png)
 
 *Figure 2: This graph shows that the Random Forest Regressor had the
 highest test accuracy, which is why we chose that model to move forward
-with.*
+with. XGBoost, and especially SVR, had lower test accuracies than the
+Random Forest Regressor, and were thus eliminated from consideration.*
 
-The best set of hyperparameter for the best model: Random Forest
-Regressor is {‘max\_depth’: 25, ‘max\_features’: ‘sqrt’,
-‘min\_samples\_split’: 2, ‘n\_estimators’: 100}.
+The best set of hyperparameters for the best model, Random Forest
+Regressor, are: - `max_depth`: 25; the maximum depth of the tree is 25.
+- `max_features`: `sqrt`; the number of features to consider when
+looking for the best split is the square root of the number of features.
+- `min_samples_split`: 2; the minimum number of samples required to
+split an internal node is 2. - `n_estimators`: 100; the number of trees
+in the forest is 100.
 
 For the Random Forest Regressor, the 10 most important features were:
 
@@ -203,7 +205,7 @@ only apply to the Quebec City data set.
 
 ## References
 
-<div id="refs" class="references hanging-indent">
+<div id="refs" class="references">
 
 <div id="ref-airbnb2019airbnb">
 
@@ -262,6 +264,14 @@ Pedregosa, Fabian, Gaël Varoquaux, Alexandre Gramfort, Vincent Michel,
 Bertrand Thirion, Olivier Grisel, Mathieu Blondel, et al. 2011.
 “Scikit-Learn: Machine Learning in Python.” *Journal of Machine
 Learning Research* 12 (Oct): 2825–30.
+
+</div>
+
+<div id="ref-percival2014test">
+
+Percival, Harry. 2014. *Test-Driven Development with Python: Obey the
+Testing Goat: Using Django, Selenium, and Javascript*. " O’Reilly Media,
+Inc.".
 
 </div>
 
