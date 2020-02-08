@@ -50,18 +50,16 @@ In our project, we attempt to build a regression model using multiple linear reg
 
 For the Random Forest Regressor, the 10 most important features were:
 
-1.  `accommodates`, the number of individuals the unit can accommodate.
-2.  `bathrooms`, the number of bathrooms in the unit.
-3.  `longitude`, the longitude of the rental unit.
-4.  `calculated_host_listings_count_entire_homes`, which were the number
-    of houses each host had up.
-5. `calculated_host_listings_count`, which were the number of listings
-    each host had up.
-6.  `bedrooms`, the number of bedrooms in the unit.
-7.  `latitude`, the latitude of the rental unit.
-8.  `minimum_nights`,the minimum number of nights the renter is required to rent the unit for. 
-9.  `property_type_loft`, the property type being a loft.
-10.  `reviews_per_month`, the average number of reveiws the listing received each month.
+1. `accommodates`, the number of individuals the unit can accomodate. 
+2. `bathrooms`, the number of bathrooms in the unit. 
+3. `longitude`, the longitude of the rental unit.
+4. `calculated_host_listings_count_entire_homes`, which were the number of houses each host had up. 
+5. `calculated_host_listings_count`, which were the number of listings each host had up.
+6. `bedrooms`, the number of bedrooms in the unit. 
+7. `latitude`, the latitude of the rental unit. 
+8. `property_type_loft`, the property type being a loft. 
+9. `reviews_per_month`, the average number of reviews the listing received each month. 
+10. `is_location_exact`, whether or not the location the host posted is the exact location of the unit.
 
 This analysis could prove useful for 2 major groups of individuals: (1) individuals who are looking to rent out one of their properties as an Airbnb, and are looking for a potential price to charge, and (2) individuals who currently rent out their properties as an Airbnb ('hosts'), and are trying to determine how best to increase the valuation of the rental property. 
 
