@@ -113,7 +113,7 @@ def main(input_dir, output):
     feature_summary = alt.Chart(best_features).mark_bar().encode(
         x=alt.X('scores:Q', title="importance score"),
         y=alt.Y('feature:N', sort=alt.EncodingSortField(field="scores", order='descending')),
-        color=alt.Color('feature:N')
+        color=alt.Color('feature:N', legend=None)
     )
 
     with alt.data_transformers.enable('default'):
