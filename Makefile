@@ -3,7 +3,7 @@
 ## Summary: This script downloads and processes data, generate plots automatically, perform analysis and final report
 
 .PHONY : all
-all: data/X_train.csv eda/corr_table.csv results/score_plot.png
+all: data/X_train.csv eda/corr_table.csv results/score_plot.png docs/final_report.md
 
 # Raw Data Download
 data/raw_quebec_city_airbnb_data.csv : src/load_data.R
@@ -26,8 +26,9 @@ results/feature_importance_rfr.csv results/feature_importance_xgb.csv results/su
 	python src/model.py 
 
 # Rendering final report
-docs/final_report.md: docs/final_report.Rmd docs/citations.bib results/score_plot.PNG results/score_summary.PNG eda/heatmap.PNG eda/price_linearanalysis1.PNG eda/price_linearanalysis2.PNG eda/price_linearanalysis3.PNG
-	Rscript -e "library(rmarkdown);render('docs/final_report.Rmd', output_format = 'github_document')"
+docs/final_report.md: docs/final_report.Rmd docs/citations.bib 
+	Rscript -e "rmarkdown::render('docs/final_report.Rmd', output_format = 'github_document')"
 
 clean :
-	rm data/raw_quebec_city_airbnb_data.csv results/*.csv results/*.png results/*.PNG eda/*.PNG
+	rm data/*.csv results/*.csv results/*.png eda/*.png docs/final_report.md
+	
