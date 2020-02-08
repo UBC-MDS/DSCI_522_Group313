@@ -86,6 +86,26 @@ This analysis could prove useful for 2 major groups of individuals: (1) individu
 > $ make clean
 
 
+## Using Docker
+*note - the instructions in this section also depends on running this in a unix shell (e.g., terminal or Git Bash)*
+
+To replicate the analysis, install [Docker](https://www.docker.com/get-started). Then clone this GitHub repository and run the following command at the command line/terminal from the root directory of this project:
+
+```
+docker run --rm -v /$(pwd):/DSCI_522_Group313 group_313 make -C DSCI_522_Group313 all
+```
+
+To reset the repo to a clean state, with no intermediate or results files, run the following command at the command line/terminal from the root directory of this project:
+
+```
+docker run --rm -v /$(pwd):/DSCI_522_Group313 group_313 make -C DSCI_522_Group313 all
+```
+
+To clone the docker image from the root directory of this project, run the following command:
+
+```
+docker build --tag group_313 .
+```
 
 **For a detailed description of each scripts, please refer to the [README.md file in the src folder of this repo](https://github.com/UBC-MDS/DSCI_522_Group313/tree/master/src). **
 
@@ -112,5 +132,7 @@ The final report can be found [here](https://github.com/UBC-MDS/DSCI_522_Group31
     - feather == 0.4.0
     - selenium == 3.141.0
 
-## Makefile Graph
+## Dependency Graph
 ![img](Makefile.png)
+
+
