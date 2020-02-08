@@ -160,13 +160,13 @@ For the Random Forest Regressor, the 10 most important features were:
 
 7.  `latitude`, the latitude of the rental unit.
 
-8.  `minimum_nights`, the minimum number of nights the renter is
-    required to rent the unit for.
+8.  `property_type_loft`, the property type being a loft.
 
-9.  `property_type_loft`, the property type being a loft.
-
-10. `reviews_per_month`, the average number of reviews the listing
+9.  `reviews_per_month`, the average number of reviews the listing
     received each month.
+
+10. `is_location_exact`, whether or not the location the host posted is
+    the exact location of the unit.
 
 The following image summarizes the top 10 features as well as their
 feature scores: ![img](../results/score_summary.png)
