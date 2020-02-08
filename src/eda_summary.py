@@ -176,17 +176,18 @@ class EDA():
                                         alt.Color('Correlation:Q', scale=alt.Scale(scheme='viridis'))
         )
         # Add the correlation values as a text mark
-        text = heatmap.mark_text(baseline='middle', fontSize=8).encode(
-            text=alt.Text('Correlation:Q', format='.2'),
-            color=alt.condition(
-                alt.datum.Correlation >= 0.95,
-                alt.value('black'),
-                alt.value('white')
-            )
-        )
+        # text = heatmap.mark_text(baseline='middle', fontSize=8).encode(
+        #     text=alt.Text('Correlation:Q', format='.2'),
+        #     color=alt.condition(
+        #         alt.datum.Correlation >= 0.95,
+        #         alt.value('black'),
+        #         alt.value('white')
+        #     )
+        # )
 
         # Set the height, width, title and other properties
-        corrMatrix_chart = (heatmap + text).properties(
+        # corrMatrix_chart = (heatmap + text).properties(
+        corrMatrix_chart = heatmap.properties(
             background='white',
             width=1200,
             height=1200,

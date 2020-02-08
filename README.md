@@ -8,7 +8,9 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 
 ```
 .
+├── Dockerfile
 ├── Makefile
+├── Makefile.png
 ├── README.md
 ├── data
 │   └── README.md
@@ -21,10 +23,13 @@ A data analysis project for DSCI 522 (Data Science Workflows), a course as part 
 │   ├── final_report.md
 │   └── proposal.md
 ├── eda
-│   └── README.md
+│   ├── README.md
+│   ├── heatmap.png
+│   ├── price_linearanalysis1.png
+│   ├── price_linearanalysis2.png
+│   └── price_linearanalysis3.png
 ├── results
 │   ├── README.md
-│   ├── price_linearanalysis.PNG
 │   ├── score_plot.png
 │   └── score_summary.png
 └── src
