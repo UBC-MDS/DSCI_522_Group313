@@ -69,7 +69,7 @@ During our exploratory data analysis, we generated scatter plots in
 order to examine the relationship of price with our other features. The
 features did not appear to have a linear relationship with our response
 variable, but, as expected, some of the other predictors were highly
-correlated with each other (e.g. `bedrooms` (the number of bedrooms),
+correlated with each other (e.g. `bedrooms` (the number of bedrooms),
 and `beds` (the number of beds)).
 
 Shown below is an example of a plot from the EDA, displaying the lack of
@@ -232,14 +232,15 @@ Language*. <https://CRAN.R-project.org/package=docopt>.
 
 Ert, Eyal, Aliza Fleischer, and Nathan Magen. 2016. “Trust and
 Reputation in the Sharing Economy: The Role of Personal Photos in
-Airbnb.” *Tourism Management* 55: 62–73.
+Airbnb.” *Tourism Management* 55. Elsevier: 62–73.
 
 </div>
 
 <div id="ref-hunter2007matplotlib">
 
 Hunter, John D. 2007. “Matplotlib: A 2D Graphics Environment.”
-*Computing in Science & Engineering* 9 (3): 90–95.
+*Computing in Science & Engineering* 9 (3). IEEE Computer Society:
+90–95.
 
 </div>
 
@@ -312,7 +313,8 @@ Scotts Valley, CA: CreateSpace.
 
 Walt, Stéfan van der, S Chris Colbert, and Gael Varoquaux. 2011. “The
 Numpy Array: A Structure for Efficient Numerical Computation.”
-*Computing in Science & Engineering* 13 (2): 22–30.
+*Computing in Science & Engineering* 13 (2). IEEE Computer Society:
+22–30.
 
 </div>
 
